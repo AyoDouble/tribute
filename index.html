@@ -1,34 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>In Loving Memory · Vse Olanrewaju Macaulay</title>
-  <meta name="description"
-    content="A tribute to the life and legacy of Vse Olanrewaju Macaulay (1959 – 2026). Share condolences and memories." />
+  <meta name="description" content="A tribute to the life and legacy of Vse Olanrewaju Macaulay (1959 – 2026)." />
   <meta property="og:title" content="In Loving Memory of Vse Olanrewaju Macaulay" />
   <meta property="og:description" content="1959 – 2026 · Share your condolences and memories." />
   <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --cream-mid: #ede9e2;
+      --dark: #14120e;
+      --dark-card: #1c1a17;
+      --mid: #3a3631;
+      --text: #2a2825;
+      --subtext: #6b6560;
+      --border: #ddd8cf;
+      --white: #ffffff;
+      --gold: #9a7830;
+      --gold-lt: #c9a96e;
+      --gold-dim: rgba(154, 120, 48, 0.15);
+      --shadow-sm: 0 1px 6px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.09);
+      --radius: 6px;
+      --radius-lg: 12px;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Lato', Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 44px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.75rem auto 0;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--subtext);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .state-text {
+      text-align: center;
+      color: var(--subtext);
+      font-style: italic;
+      font-size: 0.88rem;
+      padding: 2rem 0;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2rem;
+      background: rgba(15, 13, 10, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+    }
+    .nav-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--gold-lt); }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { color: #c5bfb8; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--gold-lt); font-size: 1.3rem; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--dark);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center 40%, #251f14 0%, #0e0d0a 65%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 7rem 1.5rem 5rem;
+      max-width: 600px;
+    }
+    .hero-photo-ring {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      border: 2px solid var(--gold);
+      padding: 5px;
+      box-shadow: 0 0 36px rgba(154,120,48,0.22);
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.8rem; }
+    .hero-name { font-family: var(--serif); font-size: clamp(1.9rem, 5.5vw, 3.2rem); font-weight: 700; color: var(--white); margin-bottom: 0.9rem; }
+    .hero-dates { font-family: var(--serif); font-size: 1rem; color: var(--gold-lt); letter-spacing: 0.2em; margin-bottom: 1.8rem; }
+    .hero-divider { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 1.6rem; opacity: 0.55; }
+    .hero-quote { font-family: var(--serif); font-size: 0.92rem; color: #8a8378; line-height: 1.9; }
+
+    /* CANDLES */
+    .candles-section {
+      background: #111009;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      border-top: 1px solid rgba(201,169,110,0.08);
+    }
+    .candles-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem 0.8rem;
+      min-height: 90px;
+      margin-bottom: 2.2rem;
+    }
+    .candle { display: flex; flex-direction: column; align-items: center; }
+    .flame {
+      width: 13px;
+      height: 20px;
+      border-radius: 50% 50% 28% 28%;
+      background: radial-gradient(ellipse at 50% 85%, #fff 0%, #ffe566 25%, #ff9500 60%, transparent 100%);
+      animation: flicker 1.5s ease-in-out infinite alternate;
+      box-shadow: 0 0 7px 2px rgba(255,160,40,0.55), 0 0 22px 6px rgba(255,110,0,0.18);
+    }
+    .wick { width: 2px; height: 5px; background: #555; }
+    .candle-body {
+      width: 20px;
+      background: linear-gradient(to right, #ddd5c0, #f0e8d5, #ccc4b0);
+      border-radius: 2px 2px 3px 3px;
+    }
+    @keyframes flicker {
+      0%   { transform: scaleX(1) scaleY(1) rotate(-2deg); opacity: 1; }
+      50%  { transform: scaleX(0.92) scaleY(1.07) rotate(-1deg); opacity: 1; }
+      100% { transform: scaleX(0.98) scaleY(1.03) rotate(-1.8deg); opacity: 1; }
+    }
+    .candles-caption { font-family: var(--serif); font-style: italic; color: #7a7268; font-size: 0.92rem; margin-bottom: 1.3rem; }
+    .btn-candle {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold-lt);
+      padding: 0.6rem 1.8rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-candle:hover { background: var(--gold); color: var(--white); }
+    .candles-tally { color: #5a5650; font-size: 0.8rem; min-height: 1.2em; }
+
+    /* TIMELINE */
+    .timeline-section { padding: 7rem 1.5rem; background: var(--cream); }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+    .tl-item { display: flex; justify-content: flex-end; padding: 0 calc(50% + 36px) 2.5rem 0; position: relative; }
+    .tl-item.right { justify-content: flex-start; padding: 0 0 2.5rem calc(50% + 36px); }
+    .tl-dot {
+      position: absolute;
+      left: 50%; top: 0.6rem;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--cream);
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 3px var(--gold-dim);
+    }
+    .tl-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      max-width: 320px;
+      box-shadow: var(--shadow-sm);
+    }
+    .tl-year { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; display: block; }
+    .tl-card h3 { font-family: var(--serif); font-size: 1rem; color: var(--dark); margin-bottom: 0.35rem; }
+    .tl-card p { font-size: 0.86rem; color: var(--subtext); line-height: 1.65; }
+
+    /* CONDOLENCES */
+    .condolence-section { padding: 7rem 1.5rem; background: var(--cream-mid); }
+    .condolence-form { display: flex; flex-direction: column; gap: 1rem; max-width: 540px; margin: 0 auto 3.5rem; }
+    .condolence-form input, .condolence-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .condolence-form input:focus, .condolence-form textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-dim); }
+    .btn-submit {
+      padding: 0.9rem;
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover:not(:disabled) { background: #2c2825; }
+    .form-feedback { font-size: 0.82rem; color: var(--gold); text-align: center; min-height: 1.2em; }
+    .condolences-feed { display: flex; flex-direction: column; gap: 1.1rem; max-width: 680px; margin: 0 auto; }
+    .condolence-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .c-name { font-family: var(--serif); font-weight: 600; font-size: 0.97rem; color: var(--dark); margin-bottom: 0.2rem; }
+    .c-date { font-size: 0.74rem; color: var(--subtext); margin-bottom: 0.7rem; }
+    .c-msg { font-size: 0.88rem; color: var(--mid); line-height: 1.7; white-space: pre-wrap; }
+
+    /* SHARE & FOOTER */
+    .share-section { padding: 6rem 1.5rem; background: var(--cream); text-align: center; }
+    .share-buttons { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+    .share-btn { padding: 0.65rem 1.3rem; border-radius: var(--radius); border: none; font-size: 0.82rem; font-weight: 700; }
+    .share-btn.whatsapp { background: #25d366; color: #fff; }
+    .share-btn.facebook { background: #1877f2; color: #fff; }
+    .share-btn.twitter { background: #1a1a1a; color: #fff; }
+    .share-btn.copy-link { background: var(--gold); color: #fff; }
+    .copy-confirm { font-size: 0.8rem; color: var(--gold); margin-top: 1rem; min-height: 1.2em; }
+    .footer { background: #0e0d0a; color: #5c5852; text-align: center; padding: 3rem 1.5rem; font-size: 0.85rem; line-height: 2.2; }
+    .footer strong { color: var(--gold-lt); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .timeline::before { left: 14px; }
+      .tl-item, .tl-item.right { justify-content: flex-start; padding: 0 0 2rem 42px; }
+      .tl-dot { left: 14px; }
+      .tl-card { max-width: 100%; }
+    }
+  </style>
+</head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav" id="nav">
+  <nav class="nav">
     <span class="nav-brand">In Loving Memory</span>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#life">Life &amp; Legacy</a></li>
+    <ul class="nav-links">
+      <li><a href="#life">Life</a></li>
       <li><a href="#condolences">Condolences</a></li>
       <li><a href="#share">Share</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle">&#9776;</button>
   </nav>
 
   <!-- HERO -->
@@ -36,17 +308,14 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-photo-ring">
-        <img class="hero-photo" src="portrait.jpg" alt="Vse Olanrewaju Macaulay"
-          onerror="this.onerror=null;this.src='https://placehold.co/220x220/1c1a17/c9a96e?text=V.O.M'" />
+        <img class="hero-photo" src="portrait.jpg" alt="Vse Olanrewaju Macaulay" onerror="this.onerror=null;this.src='https://placehold.co/220x220/1c1a17/c9a96e?text=V.O.M'" />
       </div>
       <p class="hero-label">In Loving Memory of</p>
       <h1 class="hero-name">Vse Olanrewaju Macaulay</h1>
       <p class="hero-dates">1959 &mdash; 2026</p>
       <div class="hero-divider"></div>
-      <p class="hero-quote"><em>&ldquo;Those we love don&rsquo;t go away &mdash; they walk beside us every
-          day.&rdquo;</em></p>
+      <p class="hero-quote"><em>&ldquo;Those we love don&rsquo;t go away &mdash; they walk beside us every day.&rdquo;</em></p>
     </div>
-    <a href="#candles" class="hero-scroll">&#8595;</a>
   </section>
 
   <!-- CANDLES -->
@@ -62,57 +331,46 @@
     <div class="container">
       <h2 class="section-title">Life &amp; Legacy</h2>
       <div class="timeline">
-
         <div class="tl-item left">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <span class="tl-year">1959</span>
             <h3>A Life Begins</h3>
-            <p>Vse Olanrewaju Macaulay entered the world, bringing warmth, purpose, and light to all who would know him.
-            </p>
+            <p>Vse Olanrewaju Macaulay entered the world, bringing warmth, purpose, and light to all who would know him.</p>
           </div>
         </div>
-
         <div class="tl-item right">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <span class="tl-year">Early Years</span>
             <h3>Roots &amp; Character</h3>
-            <p>A childhood shaped by resilience and curiosity — growing with quiet strength and values that would define
-              a remarkable life.</p>
+            <p>A childhood shaped by resilience and curiosity — growing with quiet strength and values that would define a remarkable life.</p>
           </div>
         </div>
-
         <div class="tl-item left">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <span class="tl-year">Adult Years</span>
             <h3>Family &amp; Purpose</h3>
-            <p>A devoted family man, trusted friend, and steady presence — known for generosity of spirit and unassuming
-              grace.</p>
+            <p>A devoted family man, trusted friend, and steady presence — known for generosity of spirit and unassuming grace.</p>
           </div>
         </div>
-
         <div class="tl-item right">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <span class="tl-year">Legacy</span>
             <h3>A Life Well Lived</h3>
-            <p>Decades of love, laughter, and meaningful contribution. His legacy lives on in the hearts of everyone he
-              touched.</p>
+            <p>Decades of love, laughter, and meaningful contribution. His legacy lives on in the hearts of everyone he touched.</p>
           </div>
         </div>
-
         <div class="tl-item left">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <span class="tl-year">2026</span>
             <h3>Gone But Never Forgotten</h3>
-            <p>Departed this world in 2026, leaving behind memories that time cannot erase and a love that will endure
-              forever.</p>
+            <p>Departed this world in 2026, leaving behind memories that time cannot erase and a love that will endure forever.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -122,15 +380,12 @@
     <div class="container">
       <h2 class="section-title">Leave a Condolence</h2>
       <p class="section-sub">Share a memory, a prayer, or a word of comfort for the family.</p>
-
-      <form class="condolence-form" id="condolenceForm" novalidate>
+      <form class="condolence-form" id="condolenceForm">
         <input type="text" id="condolenceName" placeholder="Your Name" maxlength="80" required autocomplete="name" />
-        <textarea id="condolenceMessage" placeholder="Write your condolence or share a memory…" rows="4" maxlength="600"
-          required></textarea>
+        <textarea id="condolenceMessage" placeholder="Write your condolence or share a memory…" rows="4" maxlength="600" required></textarea>
         <button type="submit" class="btn-submit" id="submitBtn">Send Condolence</button>
         <p class="form-feedback" id="formFeedback"></p>
       </form>
-
       <div class="condolences-feed" id="condolencesFeed">
         <p class="state-text">Loading condolences&hellip;</p>
       </div>
@@ -141,8 +396,7 @@
   <section class="share-section" id="share">
     <div class="container">
       <h2 class="section-title">Share This Memorial</h2>
-      <p class="share-sub">Let others pay their respects &mdash; share this page so no one misses the chance to say
-        goodbye.</p>
+      <p class="section-sub">Let others pay their respects &mdash; share this page so no one misses the chance to say goodbye.</p>
       <div class="share-buttons">
         <button class="share-btn whatsapp" onclick="shareOn('whatsapp')">WhatsApp</button>
         <button class="share-btn facebook" onclick="shareOn('facebook')">Facebook</button>
@@ -162,8 +416,135 @@
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="app.js"></script>
-</body>
 
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQPnwRgDwrYqcG519S0vtKucVgLj-J4ss",
+      authDomain: "tribute-d8b65.firebaseapp.com",
+      projectId: "tribute-d8b65",
+      storageBucket: "tribute-d8b65.firebasestorage.app",
+      messagingSenderId: "62595433031",
+      appId: "1:62595433031:web:01020eb249bd4b3d0f6762",
+      measurementId: "G-LW6SQVM5KB"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const condRef = db.collection('condolences');
+    const metaRef = db.doc('meta/site');
+
+    function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function fmtDate(ts) {
+      if (!ts) return new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      const d = ts.toDate ? ts.toDate() : new Date(ts);
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    // CANDLES
+    const candlesRow = document.getElementById('candlesRow');
+    const candleTally = document.getElementById('candleTally');
+    const lightBtn = document.getElementById('lightCandleBtn');
+    let totalCandles = 5;
+
+    function renderCandles(n) {
+      candlesRow.innerHTML = '';
+      const show = Math.min(n, 24);
+      for (let i = 0; i < show; i++) {
+        const c = document.createElement('div');
+        c.className = 'candle';
+        c.innerHTML = '<div class="flame"></div><div class="wick"></div><div class="candle-body" style="height:'+Math.round(40+Math.random()*36)+'px"></div>';
+        candlesRow.appendChild(c);
+      }
+      candleTally.textContent = n + ' candles lit in remembrance';
+    }
+
+    metaRef.onSnapshot(snap => {
+      if (snap.exists && snap.data().candles) {
+        totalCandles = snap.data().candles;
+        renderCandles(totalCandles);
+      } else {
+        renderCandles(totalCandles);
+      }
+    });
+
+    lightBtn.addEventListener('click', () => {
+      totalCandles++;
+      renderCandles(totalCandles);
+      metaRef.set({ candles: totalCandles }, { merge: true });
+    });
+
+    // CONDOLENCES REALTIME
+    const condForm = document.getElementById('condolenceForm');
+    const nameInput = document.getElementById('condolenceName');
+    const msgInput = document.getElementById('condolenceMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const feedback = document.getElementById('formFeedback');
+    const feed = document.getElementById('condolencesFeed');
+
+    condRef.orderBy('createdAt', 'desc').limit(100).onSnapshot(snap => {
+      feed.innerHTML = '';
+      if (snap.empty) {
+        feed.innerHTML = '<p class="state-text">Be the first to leave a condolence.</p>';
+        return;
+      }
+      snap.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement('div');
+        card.className = 'condolence-card';
+        card.innerHTML = `<p class="c-name">${esc(data.name)}</p><p class="c-date">${fmtDate(data.createdAt)}</p><p class="c-msg">${esc(data.message)}</p>`;
+        feed.appendChild(card);
+      });
+    }, err => {
+      console.error("Firestore error:", err);
+      feed.innerHTML = '<p class="state-text" style="color:#d9534f;">Unable to load condolences. Check Firestore Rules.</p>';
+    });
+
+    condForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const message = msgInput.value.trim();
+      if (!name || !message) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        await condRef.add({
+          name,
+          message,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        nameInput.value = '';
+        msgInput.value = '';
+        feedback.textContent = 'Thank you for your condolence 🕊️';
+        setTimeout(() => feedback.textContent = '', 3500);
+      } catch (err) {
+        console.error(err);
+        feedback.textContent = 'Error sending. Please make sure Firestore rules are set to public.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Condolence';
+      }
+    });
+
+    // SHARE
+    function shareOn(p) {
+      const u = encodeURIComponent(window.location.href);
+      const t = encodeURIComponent('In Loving Memory of Vse Olanrewaju Macaulay (1959 – 2026)');
+      const links = {
+        whatsapp: `https://wa.me/?text=${t}%20${u}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
+        twitter: `https://twitter.com/intent/tweet?text=${t}&url=${u}`
+      };
+      if (links[p]) window.open(links[p], '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        document.getElementById('copyConfirm').textContent = 'Link copied ✓';
+        setTimeout(() => document.getElementById('copyConfirm').textContent = '', 3000);
+      });
+    }
+  </script>
+</body>
 </html>
